@@ -2,7 +2,7 @@
 import withPWA from "next-pwa"
 
 const nextConfig = {
-    distDir: "build",
+    // distDir: "build",
     reactStrictMode: true,
     // skipWaiting: true,
     // swcMinify: true,
@@ -13,7 +13,8 @@ const nextConfig = {
 
 export default withPWA({
     dest: "public",
-    disable: process.env.NODE_ENV !== "development",
+    disable: process.env.NODE_ENV === "development",
     register: true,
     skipWaiting: true,
+    runtimeCaching: [],
 })(nextConfig);

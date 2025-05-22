@@ -24,10 +24,13 @@ export const metadata = {
     url: "https://roshan-sharma-portfolio.vercel.app/"
   }],
   viewport: "minimum-scale=1, intial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
-  icons: [
-    {rel: "apple-touch-icon", url: "icons512_maskable.png"},
-    {rel: "icon", url: "icons512_rounded.png"}
-  ]
+  icons: {
+    icon: [
+      { url: "/../../public/icons/next-pwa-logo-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/../../public/icons/icons512_maskable.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/../../public/icons/icons512_maskable.png",
+  },
 };
 
 export default function RootLayout({ children }) {
