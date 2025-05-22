@@ -7,26 +7,26 @@ const NAV_ITEMS = [
   {
     name: "home",
     href: "/home",
-    icon: "/assets/home-navbar-icon.svg",
-    iconSelected: "/assets/home-navbar-icon.svg", 
+    icon: "/assets/home_icon.svg",
+    iconSelected: "/assets/home_icon_white.svg", 
   },
   {
     name: "favorite",
     href: "/favorite",
-    icon: "/assets/search.svg",
-    iconSelected: "/assets/search-selected.svg",
+    icon: "/assets/favorite.svg",
+    iconSelected: "/assets/favorite_white.svg",
   },
   {
     name: "reminders",
     href: "/daily-reminders",
-    icon: "/assets/nav-item.svg",
-    iconSelected: "/assets/pack-navbar-icon.svg",
+    icon: "/assets/reminder_logo_gray.svg",
+    iconSelected: "/assets/reminder_logo.svg",
   },
   {
     name: "pet",
     href: "/pet",
-    icon: "/assets/nav-icon.svg",
-    iconSelected: "/assets/nav-icon.svg",
+    icon: "/assets/pet.svg",
+    iconSelected: "/assets/pet_white.svg",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function BottomNavbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 w-full max-w-md bg-white h-16 flex items-center justify-around z-50">
+    <nav className="fixed bottom-0 w-full max-w-md bg-white ml-5 h-16 flex items-center justify-around">
       {NAV_ITEMS.map((item) => {
         const selected = pathname === item.href;
         return (
@@ -43,7 +43,7 @@ export default function BottomNavbar() {
             href={item.href}
             className={`flex items-center justify-center transition-all text-nowrap ${
               selected
-                ? "bg-black rounded-full px-3 py-2"
+                ? "bg-black rounded-2xl px-3 py-2"
                 : ""
             }`}
             aria-current={selected ? "page" : undefined}
@@ -53,13 +53,13 @@ export default function BottomNavbar() {
               alt={item.name}
               width={28}
               height={28}
-              className={selected ? "text-white" : "text-gray-500"}
+              className={selected ? "text-white z-10" : "text-gray-500 z-10"}
               style={{
-                filter: selected ? "invert(1) brightness(2)" : "none",
+                filter: selected ? "invert(1) brightness(2) z-10" : "none",
               }}
             />
             {selected && (
-              <span className="text-xs mt-1 text-white font-medium">{item.name}</span>
+              <span className="text-sm text-white font-medium ml-1">{item.name}</span>
             )}
           </Link>
         );

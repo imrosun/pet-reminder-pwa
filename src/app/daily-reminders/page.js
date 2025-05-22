@@ -4,20 +4,22 @@ import ReminderCard from '../../components/ReminderCard';
 import CalendarStrip from '../../components/CalendarStrip';
 import Image from 'next/image';
 import RemindersByTimeSlot from '@/components/RemindersByTimeSlot';
+import Link from 'next/link';
 
-export default function HomePage() {
-  const { reminders, markAsCompleted, deleteReminder } = useReminderStore();
+export default function DailyRemindersPage() {
+  const { reminders, markAsCompleted } = useReminderStore();
 
-  // Example grouping by timeSlot and status
+  // Group by timeSlot and completed status
   const grouped = {
     Morning: reminders.filter(r => r.timeSlot === 'Morning' && !r.completed),
     Afternoon: reminders.filter(r => r.timeSlot === 'Afternoon' && !r.completed),
     Evening: reminders.filter(r => r.timeSlot === 'Evening' && !r.completed),
+    Pending: reminders.filter(r => r.category === 'Vet' && !r.completed),
     Completed: reminders.filter(r => r.completed),
   };
 
   return (
-    <div className="p-4 pt-6 pb-20">
+    <div className="p-4 pt-6 pb-20 bg-gray-100">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl text-[#171717] font-bold">daily reminders</h1>
@@ -33,55 +35,48 @@ export default function HomePage() {
         <CalendarStrip />
       </div>
 
-      {/* Filters */}
-      {/* <FilterBar /> */}
-
-      {/* Reminders by Time Slot */}
-      {/* {['Morning', 'Afternoon', 'Evening'].map(slot => (
-        <div key={slot}>
-          <div className="flex items-center gap-2 my-4">
-            <span className="text-xl">{slot === 'Morning' ? '🌅' : slot === 'Afternoon' ? '🌞' : '🌙'}</span>
-            <span className="text-gray-500">{slot.toLowerCase()}</span>
-          </div>
-          {grouped[slot].length === 0 && <div className="text-gray-400 text-sm">No reminders.</div>}
-          {grouped[slot].map(reminder => (
-            <ReminderCard
-              key={reminder.id}
-              reminder={reminder}
-              onComplete={markAsCompleted}
-              onDelete={deleteReminder}
-            />
-          ))}
-        </div>
-      ))} */}
-
-       <RemindersByTimeSlot
+      {/* Time slot toggle section */}
+      <RemindersByTimeSlot
         grouped={grouped}
         markAsCompleted={markAsCompleted}
-        deleteReminder={deleteReminder}
       />
 
       {/* Pending goals */}
       <div className="text-gray-500 font-semibold my-4">pending goals</div>
-      {grouped.Completed.length === 0 && <div className="text-black font-bold bg-white p-4 rounded-xl">No pending reminders.</div>}
-      {grouped.Completed.map(reminder => (
+      {grouped.Pending.length === 0 && (
+        <div className="text-black font-bold bg-white p-4 rounded-xl">
+          No pending reminders.
+        </div>
+      )}
+      {grouped.Pending.map(reminder => (
         <ReminderCard
           key={reminder.id}
           reminder={reminder}
-          onDelete={deleteReminder}
+          onComplete={markAsCompleted}
         />
       ))}
 
-      {/* Completed goals*/}
+      {/* Completed goals */}
       <div className="text-gray-500 font-semibold my-4">completed goals</div>
-      {grouped.Completed.length === 0 && <div className="text-gray-400 text-sm bg-[#d9d9d9] p-4 rounded-xl">No completed reminders.</div>}
+      {grouped.Completed.length === 0 && (
+        <div className="text-gray-400 text-sm bg-[#d9d9d9] p-4 rounded-xl">
+          No completed reminders.
+        </div>
+      )}
       {grouped.Completed.map(reminder => (
         <ReminderCard
           key={reminder.id}
           reminder={reminder}
-          onDelete={deleteReminder}
+          completedView // Only show title and icon
         />
       ))}
+
+      {/* Add reminder button */}
+    
+
+      <Link href="/add-reminder" className='flex justify-end'>
+        <Image className='fixed bottom-20' src="/assets/add_button.svg" width="60" height="60" alt="zap" />
+      </Link>
     </div>
   );
 }
