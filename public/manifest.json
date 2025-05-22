@@ -1,0 +1,37 @@
+{
+  "theme_color": "#02c375",
+  "background_color": "#f3f4f6",
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "any",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "en-US",
+  "name": "Reminder Pet",
+  "short_name": "reminder",
+  "description": "Reminder app",
+  "icons": [
+    {
+      "src": "/next-pwa-logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/next-pwa-logo-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/icon512_maskable.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "/icon512_rounded.png",
+      "type": "image/png"
+    }
+  ]
+}

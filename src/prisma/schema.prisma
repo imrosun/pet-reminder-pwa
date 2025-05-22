@@ -1,0 +1,20 @@
+model Pet {
+  id          Int        @id @default(autoincrement())
+  name        String
+  reminders   Reminder[]
+}
+
+model Reminder {
+  id          Int       @id @default(autoincrement())
+  title       String
+  notes       String?
+  startDate   DateTime
+  startTime   String
+  frequency   String
+  completed   Boolean   @default(false)
+  category    String
+  pet         Pet       @relation(fields: [petId], references: [id])
+  petId       Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
