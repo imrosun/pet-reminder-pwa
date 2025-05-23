@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import BottomNavbar from "@/components/BottomNavbar";
+import ConditionalNavbar from "../components/ConditionalNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +26,10 @@ export const metadata = {
   viewport: "minimum-scale=1, intial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
   icons: {
     icon: [
-      { url: "/../../public/icons/next-pwa-logo-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/../../public/icons/icons512_maskable.png", sizes: "512x512", type: "image/png" },
+      { url: "/icons/next-pwa-logo-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icons512_maskable.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/../../public/icons/icons512_maskable.png",
+    apple: "/icons/icons512_maskable.png",
   },
 };
 
@@ -43,10 +43,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="icons512_rounded.png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center items-center`}
       >
         {children}
-        <BottomNavbar />
+        <ConditionalNavbar />
       </body>
     </html>
   );

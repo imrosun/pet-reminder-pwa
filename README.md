@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## SCREENSHOT
 
 <img src="/screenshot/daily_reminder.png">
+
+<img src="/screenshot/add_reminder.png">
+
+

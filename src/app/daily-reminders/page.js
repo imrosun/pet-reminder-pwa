@@ -19,7 +19,7 @@ export default function DailyRemindersPage() {
   };
 
   return (
-    <div className="p-4 pt-6 pb-20 bg-gray-100">
+    <div className="p-4 pt-6 pb-20 bg-[#f3f4f6] w-full md:w-1/2">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl text-[#171717] font-bold">daily reminders</h1>

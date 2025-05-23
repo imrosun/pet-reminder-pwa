@@ -34,7 +34,7 @@ export default function BottomNavbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 w-full max-w-md bg-white ml-5 h-16 flex items-center justify-around">
+    <nav className="fixed bottom-0 w-full md:max-w-1/3 bg-white ml-5 md:ml-0 h-16 flex items-center justify-around">
       {NAV_ITEMS.map((item) => {
         const selected = pathname === item.href;
         return (
