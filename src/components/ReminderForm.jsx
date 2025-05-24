@@ -231,7 +231,6 @@ export default function ReminderForm({ onSubmit, initialData }) {
           )}
         </div>
 
-
         <div className="flex-1 px-4 py-4 mb-2 border-t border-gray-300">
           <label className="block text-black font-semibold ml-2 mb-2">Reminder Time</label>
           <input

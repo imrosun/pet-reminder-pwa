@@ -5,7 +5,7 @@ export default function PageHeader({ title, onBack }) {
         <span role="img" aria-label="Back">⬅️</span>
       </button>
       <h1 className="text-lg font-medium">{title}</h1>
-      <div style={{ width: 40 }} /> {/* Spacer for symmetry */}
+      <div style={{ width: 40 }} /> 
     </div>
   );
 }
